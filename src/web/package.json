@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "description": "A challenge for the ccc based on socketio.",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Luke",
+  "scripts": {},
+  "author": "Origins",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.3",
