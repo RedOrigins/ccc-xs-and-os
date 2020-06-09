@@ -1,3 +1,6 @@
+// TODO: This whole file will be refactored
+
+
 function getGameId() {
   const metas = document.getElementsByTagName('meta')[0];
   return metas.getAttribute("gameid");
