@@ -1,11 +1,16 @@
+// Importing dependancies
 const express = require("express");
 const socket = require("socket.io");
 const rateLimit = require("express-rate-limit");
-const { uuid } = require("uuidv4");
+const {
+  uuid
+} = require("uuidv4");
 const ComputerMove = require("tic-tac-toe-minimax").default.ComputerMove;
 
 const app = express();
 
+// Loading environment variables
+// ? Is this required?
 const PORT = process.env.PORT || 3000;
 const FLAG = process.env.FLAG || "Testing Flag.";
 const MAX_GAMES = 1000;
@@ -19,8 +24,11 @@ const symbols = {
 };
 const difficulty = "Hard";
 
+// Object containing all active games, indexed by socked connectin ID
 let games = {};
 
+// Rate limiter on express app
+// ? Is this required?
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs
@@ -36,25 +44,15 @@ app.get("/", (req, res) => {
     gameId: uuid(),
   });
 });
-
-app.get("/a", (req, res) => {
-  res.send("ok");
-  console.log(games);
-});
-
+// Initialise servers
 const server = app.listen(PORT, () =>
   console.log(`Server listening on port ${PORT}.`)
 );
 const io = socket(server);
 
 io.on("connection", (socket) => {
-  console.log(socket.request);
 
-  // if (user.last_socket_id) {
-  //   io.to(last_socket_id).emit("disconnect");
-  // }
-
-  // Data contains gameId
+  // Data contains gameId, emitted when a user wishes to start a game
   socket.on("joinedGame", (data) => {
     // Option for limiting maximum number of concurrent games, should this be an issue
     //if (Object.keys(games).length > MAX_GAMES) return;
@@ -78,18 +76,24 @@ io.on("connection", (socket) => {
 
   // Data contains piece (x or o) and tile (0 - 8)
   socket.on("takeTurn", async (data) => {
+    // If game exists
     if (!games.hasOwnProperty(socket.id)) return;
+    // If piece is x or o
     if (!(data.piece === "x" || data.piece === "o")) return;
+    // If it is current turn
     if (games[socket.id].currentTurn !== data.piece) return;
+    // If tile is valid type
     if (typeof data.tile !== "number" || data.tile < 0 || data.tile > 8) return;
+    // If tile is empty
     if (
       games[socket.id].board[data.tile] === "x" ||
       games[socket.id].board[data.tile] === "o"
     )
       return;
 
+    // Set Piece in Tile
     games[socket.id].board[data.tile] = data.piece;
-
+    // Check for terminal board state
     let result = isBoardTerminal(games[socket.id].board);
     // If the player won, send the flag
     if (result === "x") {
@@ -109,6 +113,7 @@ io.on("connection", (socket) => {
       return;
     }
 
+    // Invert current turn
     if (games[socket.id].currentTurn === "x") {
       games[socket.id].currentTurn = "o";
     } else {
@@ -124,15 +129,16 @@ io.on("connection", (socket) => {
     // Check if game still exists by this point, after winning the game will be removed
     if (!games.hasOwnProperty(socket.id)) return;
     if (games[socket.id].currentTurn !== "o") return;
-
+    // Calculate next move with minimax algorithm
     const nextMove = ComputerMove(games[socket.id].board, symbols, difficulty);
+    // Take ai turn
     games[socket.id].board[nextMove] = "o";
-
+    // Emit the piece placed to opposing player
     io.to(socket.id).emit("piecePlaced", {
       piece: "o",
       tile: nextMove,
     });
-
+    // Check for terminal board state
     result = isBoardTerminal(games[socket.id].board);
     if (result) {
       io.to(socket.id).emit("gameOver", {
@@ -142,19 +148,21 @@ io.on("connection", (socket) => {
       delete games[socket.id];
       return;
     }
-
+    // Set turn to player
     games[socket.id].currentTurn = "x";
   });
-
+  // Delete game on disconnect
   socket.on("disconnect", () => {
     delete games[socket.id];
   });
 });
 
+// Sleep helper function
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+// Checks if a given board is in a terminal state (draw, win, loss, false)
 function isBoardTerminal(board) {
   function empty() {
     return board.every((cell) => {
