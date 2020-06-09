@@ -1,6 +1,11 @@
 
 [luke.b@rlow.org.uk]
 # X's and O's
+## NB. Things I'm not sure about
+
+There's a few things in relation to this challenge that I've done, but am not sure if they are required or things that I haven't done, that I don't know if they are. These are the main ones that I know of:
+* The flag and port are currently being passed as an environment variables.
+* Ratelimited. Is this required? If not, what other measures could I take to prevent large numbers of connections from a single player if this is required?
 ## Flag
 Flag: w41T_Y0ur_TurN
 ## Briefing
