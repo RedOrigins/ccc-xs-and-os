@@ -1,0 +1,18 @@
+{
+  "name": "ccc-xs-and-os",
+  "version": "1.0.0",
+  "description": "A challenge for the ccc based on socketio.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Luke",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0",
+    "tic-tac-toe-minimax": "^1.0.8",
+    "uuidv4": "^6.1.0"
+  }
+}
