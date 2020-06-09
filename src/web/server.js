@@ -1,5 +1,6 @@
 const express = require("express");
 const socket = require("socket.io");
+const rateLimit = require("express-rate-limit");
 const { uuid } = require("uuidv4");
 const ComputerMove = require("tic-tac-toe-minimax").default.ComputerMove;
 
@@ -20,6 +21,12 @@ const difficulty = "Hard";
 
 let games = {};
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+});
+
+app.use(limiter);
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
@@ -41,10 +48,16 @@ const server = app.listen(PORT, () =>
 const io = socket(server);
 
 io.on("connection", (socket) => {
+  console.log(socket.request);
+
+  // if (user.last_socket_id) {
+  //   io.to(last_socket_id).emit("disconnect");
+  // }
+
   // Data contains gameId
   socket.on("joinedGame", (data) => {
     // Option for limiting maximum number of concurrent games, should this be an issue
-    if (Object.keys(games).length > MAX_GAMES) return;
+    //if (Object.keys(games).length > MAX_GAMES) return;
 
     // Games are indexed by the socket id. This would not work if the game was really multiplayer
     // But it simplifies things in a 'fake' multiplayer.
