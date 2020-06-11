@@ -1,13 +1,147 @@
-.grid-container {
-  display: inline-grid;
-  grid-template-columns: auto auto auto;
-  background-color: aqua;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.grid-item {
-  background-color: blueviolet;
-  border: 1px solid black;
-  padding: 80px;
-  font-size: 30px;
+@keyframes appear {
+  from {
+    transform: scale(0);
+
+  }
+
+  to {
+
+    transform: scale(1)
+  }
+}
+
+.dark {
+  position: relative;
+  background-color: #272734;
+  color: #FDFDFD;
+  height: 100vh;
+  width: 100%;
+}
+
+.title {
+  position: relative;
+  display: flex;
+  padding: 32px 0;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.grid-space {
+  display: flex;
+  width: 33vw;
+  height: 33vw;
+  margin: auto;
+  align-items: center;
+
+}
+
+.grid {
+  position: absolute;
+  z-index: 99;
+  display: grid;
+  grid-template-columns: 11vw 11vw 11vw;
+  grid-template-rows: 11vw 11vw 11vw;
+  align-items: center;
+  justify-items: center;
+}
+
+.square {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  align-content: center;
+
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+
+.icon {
+
+  transform-origin: center center;
+  display: flex;
+  margin: auto;
+
+  height: fit-content;
+  width: fit-content;
+}
+
+.icon svg {
+  animation: appear 400ms linear;
+  width: 5vw;
+  height: 5vw;
+}
+
+.overlay {
+  position: relative;
+  display: flex;
+  margin: auto;
+  align-self: center;
+}
+
+.overlay svg {
+  height: 32vw;
+  width: 32vw;
+}
+
+.subtext {
+  font-size: 16px;
   text-align: center;
+  margin-top: 32px;
+}
+
+@media only screen and (max-width: 510px) {
+  .grid-space {
+    width: 66vw;
+    height: 66vw;
+  }
+
+  .grid {
+    grid-template-columns: 22vw 22vw 22vw;
+    grid-template-rows: 22vw 22vw 22vw;
+  }
+
+  .icon svg {
+    width: 10vw;
+    height: 10vw;
+  }
+
+  .overlay svg {
+    height: 64vw;
+    width: 64vw;
+  }
+
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }

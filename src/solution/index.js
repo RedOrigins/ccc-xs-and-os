@@ -1,7 +1,9 @@
 const io = require("socket.io-client");
-const socket = io.connect("http://localhost:3000");
+const socket = io.connect("https://everytruthfuldatawarehouse.redst0ned.repl.co/");
 
-socket.emit("joinedGame", { gameId: "idhere" });
+socket.emit("joinedGame", {
+  gameId: "idhere"
+});
 
 socket.on("gameOver", (data) => {
   console.log(data);

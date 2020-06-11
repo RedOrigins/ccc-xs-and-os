@@ -38,16 +38,14 @@ app.use(limiter);
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
   // Renders page with gameId, but it isn't ever actually used for anything, just to flesh things out a bit
-  res.render("index", {
+  await res.render("index", {
     gameId: uuid(),
   });
 });
 // Initialise servers
-const server = app.listen(PORT, () =>
-  console.log(`Server listening on port ${PORT}.`)
-);
+const server = app.listen(PORT);
 const io = socket(server);
 
 io.on("connection", (socket) => {

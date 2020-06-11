@@ -11,18 +11,34 @@
 
 <body>
 
+  <div class="dark">
+    <div class="title noselect">Tic Tac Toe</div>
+    <div class="grid-space">
+      <div id="grid" class="grid">
+        <div id="box-0" class="square cursor-pointer"></div>
+        <div id="box-1" class="square cursor-pointer"></div>
+        <div id="box-2" class="square cursor-pointer"></div>
+        <div id="box-3" class="square cursor-pointer"></div>
+        <div id="box-4" class="square cursor-pointer"></div>
+        <div id="box-5" class="square cursor-pointer"></div>
+        <div id="box-6" class="square cursor-pointer"></div>
+        <div id="box-7" class="square cursor-pointer"></div>
+        <div id="box-8" class="square cursor-pointer"></div>
+      </div>
+      <div class="overlay">
 
-  <div id="game-board" class="grid-container">
-    <div id="box-0" class="grid-item"></div>
-    <div id="box-1" class="grid-item"></div>
-    <div id="box-2" class="grid-item"></div>
-    <div id="box-3" class="grid-item"></div>
-    <div id="box-4" class="grid-item"></div>
-    <div id="box-5" class="grid-item"></div>
-    <div id="box-6" class="grid-item"></div>
-    <div id="box-7" class="grid-item"></div>
-    <div id="box-8" class="grid-item"></div>
+        <svg width="364" height="364" viewBox="0 0 364 364" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="117" width="5" height="364" rx="2.5" fill="white" />
+          <rect x="242" width="5" height="364" rx="2.5" fill="white" />
+          <rect x="364" y="117" width="5" height="364" rx="2.5" transform="rotate(90 364 117)" fill="white" />
+          <rect x="364" y="242" width="5" height="364" rx="2.5" transform="rotate(90 364 242)" fill="white" />
+        </svg>
+      </div>
+
+    </div>
+    <div class="subtext noselect">Status or smthn</div>
   </div>
+
 </body>
 
 </html>
