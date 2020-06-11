@@ -1,7 +1,7 @@
 
 [luke.b@rlow.org.uk]
 # X's and O's
-[logo]: https://github.com/RedOrigins/ccc-xs-and-os/blob/master/src/image.png
+https://github.com/RedOrigins/ccc-xs-and-os/blob/master/src/image.png
 ## NB. Things I'm not sure about
 
 There's a few things in relation to this challenge that I've done, but am not sure if they are required or things that I haven't done, that I don't know if they are. These are the main ones that I know of:
