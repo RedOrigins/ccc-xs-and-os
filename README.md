@@ -7,6 +7,7 @@
 There's a few things in relation to this challenge that I've done, but am not sure if they are required or things that I haven't done, that I don't know if they are. These are the main ones that I know of:
 * The flag and port are currently being passed as an environment variables.
 * Ratelimited. Is this required? If not, what other measures could I take to prevent large numbers of connections from a single player if this is required?
+* Build version probably requires some setup to work properly at some scale, not sure how much of this I need to do.
 ## Flag
 Flag: w41T_Y0ur_TurN
 ## Briefing
