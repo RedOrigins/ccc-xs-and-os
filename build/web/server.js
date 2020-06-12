@@ -12,7 +12,7 @@ const app = express();
 // Loading environment variables
 // ? Is this required?
 const PORT = process.env.PORT || 3000;
-const FLAG = process.env.FLAG || "Testing Flag.";
+const FLAG = process.env.FLAG || "w41T_Y0ur_TurN";
 const MAX_GAMES = 1000;
 
 // For minimax package
