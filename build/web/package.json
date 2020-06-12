@@ -1,7 +1,7 @@
 {
   "name": "ccc-xs-and-os",
   "version": "1.0.0",
-  "description": "A challenge for the ccc based on socketio.",
+  "description": "A challenge for the cd ccc based on socketio.",
   "main": "server.js",
   "scripts": {},
   "author": "Origins",
