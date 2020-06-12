@@ -40,6 +40,8 @@ app.set("view engine", "ejs");
 
 // Setting to production environment, this could be done in other ways if required
 app.set('env', 'production');
+// Disable x-powered-by header
+app.disable('x-powered-by')
 
 app.get("/", async (req, res) => {
   // Renders page with gameId, but it isn't ever actually used for anything, just to flesh things out a bit
