@@ -31,4 +31,4 @@ Note: I have included my solution within the build folder.
 ## Suggested Hint
 You can't win by playing the game, but winning is the key to success here. A good starting point would be looking at what happens when you take your turn.
 ### Difficulty
-Easy
+Easy (/Medium ? )
