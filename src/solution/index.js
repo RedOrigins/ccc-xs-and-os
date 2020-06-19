@@ -14,6 +14,16 @@ takeTurn("o", 8);
 takeTurn("x", 1);
 takeTurn("o", 3);
 takeTurn("x", 2);
+           
+//     |     |     
+//  x  |  x  |  x  
+// ____|_____|_____
+//     |     |     
+//  o  |  -  |  -  
+// ____|_____|_____
+//     |     |     
+//  -  |  -  |  o  
+//     |     |     
 
 function takeTurn(piece, tile) {
   socket.emit("takeTurn", {
