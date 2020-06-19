@@ -12,7 +12,7 @@ There's a few things in relation to this challenge that I've done, but am not su
 Flag: w41T_Y0ur_TurN
 ## Briefing
 Win the game, get the flag. Simple, right?
-By Origins.
+By Red.
 ## Infrastructure
 The challenge all runs on a nodejs server running express and socketio. No files are required to be downloaded, though web pages will need to be served by said server.
 There are a few things which could be set via environment variables. These can also be put directly into the program is required.
