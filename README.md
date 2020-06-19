@@ -16,6 +16,8 @@ By Origins.
 ## Infrastructure
 The challenge all runs on a nodejs server running express and socketio. No files are required to be downloaded, though web pages will need to be served by said server.
 There are a few things which could be set via environment variables. These can also be put directly into the program is required.
+### Build Instructions
+`npm i` followed by `node server.js`
 ## Risks
 Given a large number of concurrent users, the memory footprint could grow to be quite large, so I have put in the option to limit this should it be an issue.
 Someone could also open a large number of connections to the server, this could effectively block all other users from accessing the challenge. I've put express-rate-limiter onto the app, though I'm not too sure about the configuration of that one, so I've just left it at the default for now.
