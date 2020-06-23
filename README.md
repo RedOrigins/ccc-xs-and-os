@@ -29,7 +29,7 @@ Someone could also open a large number of connections to the server, this could 
 5) There is a chance that they may be able to complete the challenge here, but I have found that to be fairly challenging due to the time restrictions.
 Note: The challenge solution comes down to playing the moves of the other player. There is a two second delay between the player taking their turn and the ai taking their next. By default, the client will prevent the player from taking their next turn until the ai has taken theirs, though clearly this can be bypassed. If the player has not won the game within the two seconds it takes for the ai to take their next turn, it can lead to some slightly strange behaviour, making the challenge rather difficult to complete in this way.
 6) There are a few ways that you could go about doing this final step (javascript injection, writing it all out in the console etc..) but the way I would consider 'ideal' would be to create a node app or web page running the socketio client, connecting to the server directly, then imitating the official page, winning the game within those two seconds, getting the flag.
-Note: I have included my solution within the build folder.
+Note: I have included my solution within the src folder.
 ## Suggested Hint
 You can't win by playing the game, but winning is the key to success here. A good starting point would be looking at what happens when you take your turn.
 ### Difficulty
